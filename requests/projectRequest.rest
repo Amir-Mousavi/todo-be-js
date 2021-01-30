@@ -1,0 +1,26 @@
+POST http://localhost:3000/projects
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "title": "My second project"
+}
+
+###
+GET http://localhost:3000/projects
+
+###
+GET http://localhost:3000/projects/2
+
+###
+DELETE  http://localhost:3000/projects/4
+
+###
+PUT  http://localhost:3000/projects/3
+Content-Type: application/json
+
+{
+    "title": "Updated project"
+}
+
+
