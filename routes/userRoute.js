@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const jwt = require("../utils/jwt");
 
 const User = require("../models/User");
 
@@ -27,8 +28,26 @@ projectRoute.post("/signup", async (req, res) => {
   }
 });
 
-projectRoute.post("/login", (req, res) => {
-  // login
+// login
+projectRoute.post("/login", async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const user = await User.findOne({
+    where: {
+      username: username,
+    },
+  });
+
+  if (!user) {
+    res.status(400).send("There is no user");
+  } else {
+    if (await bcrypt.compare(password, user.password)) {
+      jwt.generateToken(req, res);
+    } else {
+      res.status(403).send("Password is wrong");
+    }
+  }
 });
 
 module.exports = projectRoute;

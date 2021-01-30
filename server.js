@@ -4,6 +4,7 @@ const taskRoute = require("./routes/taskRoute");
 const projectRoute = require("./routes/projectRoute");
 const userRoute = require("./routes/userRoute");
 
+const jwt = require("./utils/jwt");
 const db = require("./utils/db");
 
 const Task = require("./models/Task");
@@ -14,8 +15,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/tasks", taskRoute);
-app.use("/projects", projectRoute);
+app.use("/tasks", jwt.verifyToken, taskRoute);
+app.use("/projects", jwt.verifyToken, projectRoute);
 app.use("/users", userRoute);
 
 app.get("/", (req, res) => {

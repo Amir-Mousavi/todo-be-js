@@ -8,6 +8,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/tasks
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hdmlkIiwiaWF0IjoxNjEyMDE0NDIyfQ.mcBRZmK58Mp9ZH0G1WNtbW3KfGAN21DySFlG9z9Biw8
 
 ###
 GET http://localhost:3000/tasks/2
