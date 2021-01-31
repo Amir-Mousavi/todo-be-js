@@ -24,3 +24,6 @@ package-lock.json
 coverage
 
 # Benchmarking
+.env.prod
+.gitignore
+.env.staging

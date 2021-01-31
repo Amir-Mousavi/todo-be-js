@@ -1,5 +1,8 @@
-const secretKey = require("../constants/jwtSecret");
 const jwt = require("jsonwebtoken");
+
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` });
+
+const secretKey = process.env.SC_CODE;
 
 const generateToken = function (req, res, next) {
   const username = req.body.username;

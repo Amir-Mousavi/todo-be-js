@@ -1,9 +1,10 @@
 POST http://localhost:3000/tasks
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hdmlkIiwiaWF0IjoxNjEyMDE0NDIyfQ.mcBRZmK58Mp9ZH0G1WNtbW3KfGAN21DySFlG9z9Biw8
 
 {
     "userId": 1,
-    "title": "Another one"
+    "title": "Another one 11"
 }
 
 ###
