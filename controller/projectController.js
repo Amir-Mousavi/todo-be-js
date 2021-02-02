@@ -2,9 +2,7 @@ const User = require("../models/User");
 const Project = require("../models/Project");
 
 exports.createProject = async function (req, res) {
-  const userId = req.body.userId;
-
-  const user = await User.findByPk(userId);
+  const user = req.user;
 
   if (!user) {
     return res.status(400).send("There is no user!");
@@ -18,22 +16,35 @@ exports.createProject = async function (req, res) {
 };
 
 exports.findAll = async function (req, res) {
-  const projects = await Project.findAll();
+  const user = req.user;
+  const projects = await Project.findAll({
+    where: {
+      userId: user.id,
+    },
+  });
 
   res.send(projects);
 };
 
 exports.findById = async function (req, res) {
-  const project = await Project.findByPk(req.params.id);
+  const user = req.user;
+
+  const project = await Project.findOne({
+    id: req.params.id,
+    userId: user.id,
+  });
 
   res.send(project);
 };
 
 exports.deleteById = async function (req, res) {
+  const user = req.user;
+
   try {
     const numberOfDeletedItems = await Project.destroy({
       where: {
         id: req.params.id,
+        userId: user.id,
       },
     });
 
@@ -48,7 +59,13 @@ exports.deleteById = async function (req, res) {
 };
 
 exports.updateById = async function (req, res) {
-  const project = await Project.findByPk(req.params.id);
+  const user = req.user;
+  const project = await Project.findOne({
+    where: {
+      id: req.params.id,
+      userId: user.id,
+    },
+  });
 
   if (!project) {
     res.status(400).send("No project");

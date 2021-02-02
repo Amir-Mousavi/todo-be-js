@@ -1,10 +1,9 @@
 POST http://localhost:3000/tasks
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hdmlkIiwiaWF0IjoxNjEyMDE0NDIyfQ.mcBRZmK58Mp9ZH0G1WNtbW3KfGAN21DySFlG9z9Biw8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJpYXQiOjE2MTIyNjIzOTcsImV4cCI6MTYxMjI3MzE5N30.ZhkUm9CWhHlxvD1cX0cFfKcp_By6Y4DjVODwlfqXkuw
 
 {
-    "userId": 1,
-    "title": "Another one 11"
+    "title": "My new task"
 }
 
 ###

@@ -2,9 +2,7 @@ const User = require("../models/User");
 const Task = require("../models/Task");
 
 exports.createTask = async function (req, res) {
-  const userId = req.body.userId;
-
-  const user = await User.findByPk(userId);
+  const user = req.user;
 
   if (!user) {
     return res.status(400).send("There is no user!");
@@ -19,22 +17,31 @@ exports.createTask = async function (req, res) {
 };
 
 exports.findAll = async function (req, res) {
-  const tasks = await Task.findAll();
+  const user = req.user;
+  const tasks = await Task.findAll({
+    where: { userId: user.id },
+  });
 
   res.send(tasks);
 };
 
 exports.findById = async function (req, res) {
-  const task = await Task.findByPk(req.params.id);
+  const user = req.user;
+  const task = await Task.findOne({
+    id: req.params.id,
+    userId: user.id,
+  });
 
   res.send(task);
 };
 
 exports.deleteById = async function (req, res) {
+  const user = req.user;
   try {
     const numberOfDeletedItems = await Task.destroy({
       where: {
         id: req.params.id,
+        userId: user.id,
       },
     });
 
@@ -49,7 +56,13 @@ exports.deleteById = async function (req, res) {
 };
 
 exports.updateById = async function (req, res) {
-  const task = await Task.findByPk(req.params.id);
+  const user = req.user;
+  const task = await Task.findOne({
+    where: {
+      id: req.params.id,
+      userId: user.id,
+    },
+  });
 
   if (!task) {
     res.status(400).send("No Task");

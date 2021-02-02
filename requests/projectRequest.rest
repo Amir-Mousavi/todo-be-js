@@ -1,14 +1,14 @@
 POST http://localhost:3000/projects
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hdmlkIiwiaWF0IjoxNjEyMDE0NDIyfQ.mcBRZmK58Mp9ZH0G1WNtbW3KfGAN21DySFlG9z9Biw8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJlemEiLCJpYXQiOjE2MTIyNjI2NDIsImV4cCI6MTYxMjI3MzQ0Mn0.A0nzxLgV59me0IVvFcZKz8RVFWuHRBI8XVZfm6lUej0
 
 {
-    "userId": 1,
-    "title": "New pppp1"
+    "title": "My new project(reza)"
 }
 
 ###
 GET http://localhost:3000/projects
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJlemEiLCJpYXQiOjE2MTIyNjI2NDIsImV4cCI6MTYxMjI3MzQ0Mn0.A0nzxLgV59me0IVvFcZKz8RVFWuHRBI8XVZfm6lUej0
 
 ###
 GET http://localhost:3000/projects/2
