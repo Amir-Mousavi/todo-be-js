@@ -48,7 +48,32 @@ const verifyToken = function (req, res, next) {
   }
 };
 
+const refreshToken = function (req, res, next) {
+  const { refreshToken } = req.body;
+  console.log(refreshToken);
+
+  if (!refreshToken) {
+    return res.status(400).send("Refresh token is empty");
+  }
+  jwt.verify(refreshToken, secretKey, async (err, result) => {
+    if (err) {
+      return res.status(500).send();
+    }
+    const { id } = result;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).send("This user does not exist");
+    }
+
+    req.body.username = user.username;
+    generateToken(req, res, next);
+  });
+};
+
 module.exports = {
   generateToken,
   verifyToken,
+  refreshToken,
 };

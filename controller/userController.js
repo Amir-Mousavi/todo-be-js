@@ -43,3 +43,5 @@ exports.login = async function (req, res) {
     }
   }
 };
+
+exports.refreshToken = jwt.refreshToken;

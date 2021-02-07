@@ -19,3 +19,12 @@ Content-Type: application/json
     "username": "reza",
     "password": "testtest"
 }
+
+###
+
+POST  http://localhost:3000/users/refreshToken
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImlhdCI6MTYxMjcxMjMzNn0.ncZm-uFHJAHMKDhPGNFNMly80V3N3qH4P8ng8wZLXXk"
+}
