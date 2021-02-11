@@ -27,3 +27,6 @@ coverage
 .env.prod
 .gitignore
 .env.staging
+/.idea/modules.xml
+/.idea/todo-be.iml
+/.idea/vcs.xml
