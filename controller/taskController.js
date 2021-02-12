@@ -1,5 +1,7 @@
-const User = require("../models/User");
 const Task = require("../models/Task");
+
+const { DEFAULT_PAGINATION } = require("../constants/pagination");
+const { paginationObject } = require("../utils/pagination");
 
 exports.createTask = async function (req, res) {
   const user = req.user;
@@ -18,11 +20,22 @@ exports.createTask = async function (req, res) {
 
 exports.findAll = async function (req, res) {
   const user = req.user;
-  const tasks = await Task.findAll({
+
+  const page = parseInt(req.query.page || DEFAULT_PAGINATION.page);
+  const size = parseInt(req.query.size || DEFAULT_PAGINATION.size);
+
+  const { rows, count } = await Task.findAndCountAll({
     where: { userId: user.id },
+    offset: page * size,
+    limit: size,
   });
 
-  res.send(tasks);
+  res.send({
+    data: rows,
+    meta: {
+      ...paginationObject({ page, size, count }),
+    },
+  });
 };
 
 exports.findById = async function (req, res) {

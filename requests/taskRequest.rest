@@ -7,8 +7,8 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFtaXIiLCJp
 }
 
 ###
-GET http://localhost:3000/tasks
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5hdmlkIiwiaWF0IjoxNjEyMDE0NDIyfQ.mcBRZmK58Mp9ZH0G1WNtbW3KfGAN21DySFlG9z9Biw8
+GET http://localhost:3000/tasks?page=1&size=20
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJlemEiLCJpYXQiOjE2MTMwNjUxMDQsImV4cCI6MTYxMzA3NTkwNH0.yqn1lS5ju7zTxbXK1yFgJVFX_g7C4nMV29OmkZDEVio
 
 ###
 GET http://localhost:3000/tasks/2
