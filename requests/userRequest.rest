@@ -6,7 +6,7 @@ POST  http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-    "username": "reza",
+    "username": "lotor68865@netjook.com",
     "password": "testtest"
 }
 

@@ -27,7 +27,7 @@ Project.hasMany(Task);
 User.hasMany(Task);
 User.hasMany(Project);
 
-db.sync()
+db.sync({ force: true })
   .then(() => {
     app.listen(3000);
   })

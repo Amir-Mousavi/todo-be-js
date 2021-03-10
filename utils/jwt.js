@@ -72,8 +72,37 @@ const refreshToken = function (req, res, next) {
   });
 };
 
+const createConfirmToken = function ({ email, userId }, cb) {
+  jwt.sign(
+    { userId, email },
+    process.env.EMAIL_CONFIRMATION_SECRET,
+    {
+      expiresIn: "10h",
+    },
+    (err, token) => {
+      if (err) {
+        cb(err, null);
+      } else {
+        cb(null, token);
+      }
+    }
+  );
+};
+
+const verifyConfirmToken = function (token, cb) {
+  jwt.verify(token, process.env.EMAIL_CONFIRMATION_SECRET, (err, result) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result);
+    }
+  });
+};
+
 module.exports = {
   generateToken,
   verifyToken,
   refreshToken,
+  verifyConfirmToken,
+  createConfirmToken,
 };

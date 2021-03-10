@@ -1,13 +1,20 @@
 const express = require("express");
 
-const { signUp, login, refreshToken } = require("../controller/userController");
+const {
+  signUp,
+  login,
+  refreshToken,
+  confirmEmailAddress,
+} = require("../controller/userController");
 
-const projectRoute = express();
+const userRoute = express();
 
-projectRoute.post("/signup", signUp);
+userRoute.post("/signup", signUp);
 
-projectRoute.post("/login", login);
+userRoute.post("/login", login);
 
-projectRoute.post("/refreshToken", refreshToken);
+userRoute.post("/refreshToken", refreshToken);
 
-module.exports = projectRoute;
+userRoute.get("/confirm/:confirmToken", confirmEmailAddress);
+
+module.exports = userRoute;

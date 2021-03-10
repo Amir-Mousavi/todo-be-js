@@ -18,6 +18,10 @@ const User = db.define("user", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  isConfirmed: {
+    defaultValue: false,
+    type: Sequelize.BOOLEAN,
+  },
 });
 
 module.exports = User;
